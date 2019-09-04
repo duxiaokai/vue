@@ -5,7 +5,7 @@
         <img src="../../assets/img/logo_index.png" alt />
       </div>
       <!-- 绑定表单 -->
-      <el-form :model="loginForm" :rules="ruless" style="margin-top:20px">
+      <el-form ref="loginForm" :model="loginForm" :rules="ruless" style="margin-top:20px">
         <el-form-item prop="mobile">
           <!-- 绑定手机号 -->
           <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
@@ -20,7 +20,7 @@
           <el-checkbox v-model="loginForm.check">我已阅读并同意"用户隐私条款"</el-checkbox>
         </el-form-item>
         <el-form-item>
-          <el-button style="width:100%" type="primary">登录</el-button>
+          <el-button  @click="login" style="width:100%" type="primary">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -69,7 +69,18 @@ export default {
           validator
         }]
       }
-    };
+    }
+  },
+  methods: {
+    login () {
+      this.$refs.loginForm.validate((isok)=>{
+        if(isok) {
+          this.$message({ type:'success',message:'成功'})
+        }else{
+          this.$message({ type:'warning',message:'失败'})
+        }
+      })
+    }
   }
 };
 </script>
