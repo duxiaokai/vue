@@ -32,7 +32,7 @@ export default {
   data() {
     let validator = function(rule, value, callBack) {
       if (value) {
-        callBaack();
+        callBack();
       } else {
         callBack(new Error("如不勾选用户协议见无法进入"));
       }
@@ -73,12 +73,9 @@ export default {
   },
   methods: {
     login () {
-      this.$refs.loginForm.validate((isok)=>{
-        if(isok) {
-          this.$message({ type:'success',message:'成功'})
-        }else{
-          this.$message({ type:'warning',message:'失败'})
-        }
+      //通过el-form校验整个表单
+      this.$refs.loginForm.validate((isOk=>{
+        
       })
     }
   }
