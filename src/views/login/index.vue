@@ -74,7 +74,7 @@ export default {
   methods: {
     login () {
       //通过el-form校验整个表单
-      this.$refs.loginForm.validate((isOk=>{
+      this.$refs.loginForm.validate(isOk=>{
         
       })
     }
